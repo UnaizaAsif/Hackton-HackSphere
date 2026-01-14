@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===== META TAGS ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- ===== SEO META TAGS ===== -->
+    <meta name="description" content="Compare prices across multiple retailers and find the best deals on your favorite products. Save money with our comprehensive price comparison tool.">
+    <meta name="keywords" content="price comparison, best deals, compare prices, online shopping, save money">
+    <meta name="author" content="Price Comparison App">
+    <meta name="robots" content="index, follow">
+    
+    <!-- ===== OPEN GRAPH META TAGS ===== -->
+    <meta property="og:title" content="Price Comparison App - Find the Best Deals">
+    <meta property="og:description" content="Compare prices across multiple retailers and save money on your purchases.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="./assets/og-image.jpg">
+    
+    <!-- ===== TWITTER CARD META TAGS ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Price Comparison App - Find the Best Deals">
+    <meta name="twitter:description" content="Compare prices across multiple retailers and save money.">
+    <meta name="twitter:image" content="./assets/twitter-image.jpg">
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    
+    <!-- ===== GOOGLE FONTS - INTER ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ===== FONT AWESOME ICONS ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- ===== CUSTOM STYLESHEET ===== -->
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Price Comparison App - Find the Best Deals</title>
+</head>
+<body>
+    <!-- ===== HEADER SECTION ===== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>PriceCompare</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#compare" class="nav-link">Compare</a></li>
+                    <li><a href="#deals" class="nav-link">Deals</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+        <!-- Hero Section with Advanced Search -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Find the Best Prices, Save More Money</h1>
+                    <p class="hero-description">Compare prices from top retailers instantly and never overpay again.</p>
+                    
+                    <!-- Advanced Search Box -->
+                    <div class="search-wrapper">
+                        <div class="search-box-advanced">
+                            <i class="fas fa-search search-icon"></i>
+                            <input 
+                                type="text" 
+                                class="search-input-advanced" 
+                                placeholder="Search for products, brands, categories..." 
+                                id="searchInput"
+                                autocomplete="off"
+                                aria-label="Search products">
+                            <button class="clear-search-btn" id="clearSearchBtn" title="Clear search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="voice-search-btn" id="voiceSearchBtn" title="Voice search">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="search-btn-advanced" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                                <span>Search</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Search Suggestions Dropdown -->
+                        <div class="search-suggestions" id="searchSuggestions">
+                            <div class="suggestions-loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Searching...</span>
+                            </div>
+                            <div class="suggestions-list" id="suggestionsList"></div>
+                        </div>
+                        
+                        <!-- Recent Searches Dropdown -->
+                        <div class="recent-searches" id="recentSearches">
+                            <div class="recent-header">
+                                <span><i class="fas fa-history"></i> Recent Searches</span>
+                                <button class="clear-history-btn" id="clearHistoryBtn">
+                                    <i class="fas fa-trash-alt"></i> Clear
+                                </button>
+                            </div>
+                            <div class="recent-list" id="recentList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Search Filters Bar -->
+        <section class="filters-section" id="filtersSection">
+            <div class="container">
+                <div class="filters-bar">
+                    <!-- Active Search Indicator -->
+                    <div class="active-search" id="activeSearch">
+                        <span class="search-term"></span>
+                        <button class="clear-all-btn" id="clearAllBtn">
+                            <i class="fas fa-times"></i> Clear all
+                        </button>
+                    </div>
+                    
+                    <!-- Filter Controls -->
+                    <div class="filters-controls">
+                        <!-- Category Filter -->
+                        <div class="filter-item">
+                            <label for="categoryFilter" class="filter-label">
+                                <i class="fas fa-th-large"></i> Category
+                            </label>
+                            <select id="categoryFilter" class="filter-select">
+                                <option value="">All Categories</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="home">Home & Garden</option>
+                                <option value="sports">Sports & Outdoors</option>
+                                <option value="beauty">Beauty & Health</option>
+                                <option value="toys">Toys & Games</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Price Range Filter -->
+                        <div class="filter-item filter-item-range">
+                            <label class="filter-label">
+                                <i class="fas fa-dollar-sign"></i> Price Range
+                            </label>
+                            <div class="range-inputs">
+                                <input type="number" id="minPrice" class="price-input" placeholder="Min" min="0" value="0">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="maxPrice" class="price-input" placeholder="Max" min="0" value="5000">
+                            </div>
+                            <div class="range-slider-container">
+                                <input type="range" id="priceRangeMin" class="price-range" min="0" max="5000" value="0" step="10">
+                                <input type="range" id="priceRangeMax" class="price-range" min="0" max="5000" value="5000" step="10">
+                            </div>
+                        </div>
+                        
+                        <!-- Rating Filter -->
+                        <div class="filter-item">
+                            <label for="ratingFilter" class="filter-label">
+                                <i class="fas fa-star"></i> Rating
+                            </label>
+                            <select id="ratingFilter" class="filter-select">
+                                <option value="">All Ratings</option>
+                                <option value="4">4+ Stars</option>
+                                <option value="3">3+ Stars</option>
+                                <option value="2">2+ Stars</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Sort Options -->
+                        <div class="filter-item">
+                            <label for="sortFilter" class="filter-label">
+                                <i class="fas fa-sort"></i> Sort By
+                            </label>
+                            <select id="sortFilter" class="filter-select">
+                                <option value="relevance">Relevance</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="popularity">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Count -->
+                    <div class="results-info" id="resultsInfo">
+                        <span class="results-count">Ready to search.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="compare">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-Time Comparison</h3>
+                        <p>Get instant price comparisons from multiple retailers in real-time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Verified Deals</h3>
+                        <p>All deals are verified and updated regularly for accuracy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Price Alerts</h3>
+                        <p>Set alerts and get notified when prices drop on your favorite items.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Wishlist</h3>
+                        <p>Save products to your wishlist and track price changes over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products" id="deals">
+            <div class="container">
+                <!-- Loading Overlay -->
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Finding the best prices...</p>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER SECTION ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#compare">Compare</a></li>
+                        <li><a href="#deals">Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PriceCompare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== CUSTOM JAVASCRIPT ===== -->
+    <script src="app.js"></script>
+</body>
+</html>

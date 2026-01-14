@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.word-cloud-word {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.word-cloud-word:hover {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+}
